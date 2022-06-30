@@ -111,6 +111,9 @@ public class CustomArrayList<E> implements List<E> {
             Object[] buffer = new Object[listSize];
 
             for(int i = 0; i < listSize; i++){
+                if(baseArray[i]==null){
+                    continue;
+                }
                 if(baseArray[i].equals(o)){
                     baseArray[i]=null;
                 }
@@ -119,8 +122,6 @@ public class CustomArrayList<E> implements List<E> {
             for (int i = 0; i <= listSize; i++ ) {
                 if(baseArray[i]!=null){
                     buffer[i] = baseArray[i];
-                }else{
-
                 }
             }
 
