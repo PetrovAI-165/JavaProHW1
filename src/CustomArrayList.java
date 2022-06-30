@@ -82,7 +82,7 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        return baseArray;
     }
 
     @Override
@@ -206,7 +206,7 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public Object[] toArray(Object[] a) {
-        return baseArray;
+        return new Object[0];
     }
 }
 
