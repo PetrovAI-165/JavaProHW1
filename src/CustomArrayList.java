@@ -105,6 +105,10 @@ public class CustomArrayList<E> implements List<E> {
         return true;
     }
 
+    public boolean hasNext() {
+        return listSize != baseArray.length;
+    }
+
     @Override
     public boolean remove(Object o) {
 
@@ -142,7 +146,10 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public void clear() {
-
+        for(int i = 0; i<listSize; i++){
+            baseArray[i]=null;
+        }
+        listSize=0;
     }
 
     @Override

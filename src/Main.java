@@ -24,6 +24,7 @@ public class Main {
         System.out.println(customListWithoutValuesAndCapacity);
         System.out.println(customListWithValues);
 
+
         customListWithValues.remove("Test3");
         System.out.println(customListWithValues);
 
@@ -31,6 +32,20 @@ public class Main {
         System.out.println(customListWithValues);
 
         customListWithValues.remove("Test3");
+        System.out.println(customListWithValues);
+
+        for(int i = 11; i<=20; i++){
+            customListWithValues.add("Test"+i);
+        }
+
+        System.out.println(customListWithValues);
+
+        customListWithValues.clear();
+        System.out.println(customListWithValues);
+
+        for(int i = 1; i<=10; i++){
+            customListWithValues.add("Test"+i);
+        }
         System.out.println(customListWithValues);
 
     }
