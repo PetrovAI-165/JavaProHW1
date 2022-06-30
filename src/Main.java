@@ -6,10 +6,14 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> customListWithValues = new CustomArrayList<>(Arrays.asList("Test1", "Test2"));
-        List<String> customListWithoutValuesAndCapacuty = new CustomArrayList<>();
-        List<String> customListWithCapacity = new CustomArrayList<>(5);
+        CustomArrayList<String> customListWithValues = new CustomArrayList<>(Arrays.asList("Test1", "Test2"));
+        CustomArrayList<String> customListWithoutValuesAndCapacity = new CustomArrayList<>();
+        CustomArrayList<String> customListWithCapacity = new CustomArrayList<>(5);
 
+        for(int i = 3; i<=100; i++){
+            customListWithValues.add("Test"+i);
+        }
+        System.out.println(customListWithValues);
         System.out.println(customListWithValues.size());
         System.out.println(customListWithCapacity.size());
     }

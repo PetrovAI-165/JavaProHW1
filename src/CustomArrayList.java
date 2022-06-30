@@ -1,10 +1,11 @@
+import java.sql.Array;
 import java.util.*;
 
 public class CustomArrayList<E> implements List<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
-    private static final Object[] EMPTY_ARRAY = {};
-    private static final Object[] DEFAULTCAPACITY_EMPTY_ARRAY = {};
+    private static final Object[] EMPTY_ARRAY = new Object[10];
+    private static final Object[] DEFAULTCAPACITY_EMPTY_ARRAY = new Object[10];
     private int listSize;
     Object[] baseArray;
 
@@ -74,9 +75,32 @@ public class CustomArrayList<E> implements List<E> {
     }
 
     @Override
-    public boolean add(Object o) {
-        return false;
+    public boolean add(E o) {
+        if(listSize+1 >= baseArray.length){
+            int i = 0;
+            E[] buffer = (E[]) new Object[(int)(listSize*1.5+1)];
+
+            for ( i = 0; i <= listSize; i++ ) {
+               buffer[i] =  (E)baseArray[i];
+            }
+
+            buffer[i+1]=o;
+            baseArray = buffer;
+            listSize++;
+        }else{
+            int i = 0;
+            E[] buffer = (E[]) new Object[listSize+1];
+            for ( i = 0; i <= listSize; i++ ) {
+                buffer[i] = (E) baseArray[i];
+            }
+            buffer[i++]=o;
+            baseArray = buffer;
+            listSize++;
+        }
+        return true;
     }
+
+
 
     @Override
     public boolean remove(Object o) {
@@ -104,13 +128,13 @@ public class CustomArrayList<E> implements List<E> {
     }
 
     @Override
-    public Object set(int index, Object element) {
-        return null;
+    public void add(int index, E element) {
+
     }
 
     @Override
-    public void add(int index, Object element) {
-
+    public Object set(int index, Object element) {
+        return null;
     }
 
     @Override
@@ -162,4 +186,10 @@ public class CustomArrayList<E> implements List<E> {
     public Object[] toArray(Object[] a) {
         return new Object[0];
     }
+
+    private Object[] grow() {
+        return baseArray = new Object[(int) (baseArray.length*1.5+1)];
+    }
 }
+
+
