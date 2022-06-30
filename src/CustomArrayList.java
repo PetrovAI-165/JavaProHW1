@@ -23,6 +23,7 @@ public class CustomArrayList<E> implements List<E> {
             //for negative values
             throw new IllegalArgumentException("Cannot be lass then 0");
         }
+        listSize = baseArray.length-1;
     }
 
     /*
@@ -30,8 +31,18 @@ public class CustomArrayList<E> implements List<E> {
     */
     public CustomArrayList() {
             this.baseArray = DEFAULTCAPACITY_EMPTY_ARRAY;
+            listSize = baseArray.length-1;
     }
 
+    public String toString(){
+        String result = new String();
+        for(int i = 0;i<listSize;i++){
+            if(baseArray[i]!=null){
+                result+= baseArray[i].toString()+" ";
+            }
+        }
+        return result;
+    }
     /*
         Constructor for arraylist with given values
     */
@@ -51,7 +62,7 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public int size() {
-        return baseArray.length;
+        return listSize;
     }
 
     @Override
@@ -76,26 +87,20 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public boolean add(E o) {
-        if(listSize+1 >= baseArray.length){
+        if(listSize >= baseArray.length){
             int i = 0;
             E[] buffer = (E[]) new Object[(int)(listSize*1.5+1)];
 
-            for ( i = 0; i <= listSize; i++ ) {
+            for ( i = 0; i < listSize; i++ ) {
                buffer[i] =  (E)baseArray[i];
             }
 
-            buffer[i+1]=o;
+            buffer[listSize]=o;
             baseArray = buffer;
-            listSize++;
+            listSize+=1;
         }else{
-            int i = 0;
-            E[] buffer = (E[]) new Object[listSize+1];
-            for ( i = 0; i <= listSize; i++ ) {
-                buffer[i] = (E) baseArray[i];
-            }
-            buffer[i++]=o;
-            baseArray = buffer;
-            listSize++;
+            baseArray[listSize]=o;
+            listSize+=1;
         }
         return true;
     }

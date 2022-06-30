@@ -10,11 +10,19 @@ public class Main {
         CustomArrayList<String> customListWithoutValuesAndCapacity = new CustomArrayList<>();
         CustomArrayList<String> customListWithCapacity = new CustomArrayList<>(5);
 
-        for(int i = 3; i<=100; i++){
+        for(int i = 3; i<=10; i++){
             customListWithValues.add("Test"+i);
         }
+        for(int i = 1; i<=10; i++){
+            customListWithCapacity.add("Test"+i);
+        }
+        for (int i = 1; i<=10; i++){
+            customListWithoutValuesAndCapacity.add("Test"+i);
+        }
+
+        System.out.println(customListWithCapacity);
+        System.out.println(customListWithoutValuesAndCapacity);
         System.out.println(customListWithValues);
-        System.out.println(customListWithValues.size());
-        System.out.println(customListWithCapacity.size());
+
     }
 }
