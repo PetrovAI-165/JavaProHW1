@@ -105,11 +105,28 @@ public class CustomArrayList<E> implements List<E> {
         return true;
     }
 
-
-
     @Override
     public boolean remove(Object o) {
-        return false;
+
+            Object[] buffer = new Object[listSize];
+
+            for(int i = 0; i < listSize; i++){
+                if(baseArray[i].equals(o)){
+                    baseArray[i]=null;
+                }
+            }
+
+            for (int i = 0; i <= listSize; i++ ) {
+                if(baseArray[i]!=null){
+                    buffer[i] = baseArray[i];
+                }else{
+
+                }
+            }
+
+            baseArray =  buffer;
+
+        return true;
     }
 
     @Override
@@ -189,11 +206,7 @@ public class CustomArrayList<E> implements List<E> {
 
     @Override
     public Object[] toArray(Object[] a) {
-        return new Object[0];
-    }
-
-    private Object[] grow() {
-        return baseArray = new Object[(int) (baseArray.length*1.5+1)];
+        return baseArray;
     }
 }
 

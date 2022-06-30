@@ -24,5 +24,14 @@ public class Main {
         System.out.println(customListWithoutValuesAndCapacity);
         System.out.println(customListWithValues);
 
+        customListWithValues.remove("Test3");
+        System.out.println(customListWithValues);
+
+        customListWithValues.add("Test3");
+        System.out.println(customListWithValues);
+
+        customListWithValues.remove("Test3");
+        System.out.println(customListWithValues);
+
     }
 }
